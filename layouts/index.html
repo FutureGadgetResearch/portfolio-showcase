@@ -1,141 +1,150 @@
 {{ define "main" }}
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="hero__bg">
-      <canvas id="gridCanvas"></canvas>
-    </div>
-    <div class="hero__content">
-      <div class="hero__eyebrow reveal">
-        <span class="dot"></span> {{ upper .Site.Title }}
-      </div>
-      <h1 class="hero__title reveal">
-        <span class="hero__title-line">Building systems</span>
-        <span class="hero__title-line gradient-text">at the edge of data.</span>
-      </h1>
-      <p class="hero__subtitle reveal">
-        {{ .Site.Params.description }}
-      </p>
-      <div class="hero__cta reveal">
-        <a href="#projects" class="btn btn--primary">View Projects</a>
-        <a href="{{ .Site.Params.githubCollections }}" target="_blank" rel="noopener" class="btn btn--ghost">GitHub ↗</a>
-      </div>
-    </div>
-    <div class="hero__scroll-hint">
-      <span>Scroll</span>
-      <div class="hero__scroll-line"></div>
-    </div>
-  </section>
+<div class="layout">
 
-  <!-- ARCH STRIP -->
-  <section class="arch-strip">
-    <div class="arch-strip__inner">
-      {{ $items := slice "Hugo · Static Sites" "Firebase Auth" "Cloud Run APIs" "BigQuery Storage" "GitHub Pages CI/CD" }}
-      {{ range $i, $item := $items }}
-        {{ if gt $i 0 }}<div class="arch-strip__divider"></div>{{ end }}
-        <div class="arch-strip__item reveal">
-          <span class="arch-strip__icon">◈</span>
-          <span>{{ $item }}</span>
-        </div>
-      {{ end }}
-    </div>
-  </section>
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sidebar">
+    <div class="sidebar__inner">
 
-  <!-- PROJECTS -->
-  <section class="projects" id="projects">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">// 01</span>
-        <h2 class="section-title">Projects</h2>
-        <p class="section-desc">A suite of data-driven applications built on a shared cloud-native foundation.</p>
+      <div class="sidebar__top">
+        <a href="/" class="sidebar__wordmark">
+          <span class="sidebar__bracket">[</span>FGL<span class="sidebar__bracket">]</span>
+        </a>
+        <h1 class="sidebar__name">{{ .Site.Title }}</h1>
+        <p class="sidebar__role">{{ .Site.Params.role }}</p>
+        <p class="sidebar__bio">{{ .Site.Params.bio }}</p>
       </div>
 
-      <div class="projects__grid">
+      <nav class="sidebar__nav" aria-label="Sections">
+        <a href="#about"    class="nav-link" data-section="about">
+          <span class="nav-link__indicator"></span>
+          <span class="nav-link__label">About</span>
+        </a>
+        <a href="#projects" class="nav-link" data-section="projects">
+          <span class="nav-link__indicator"></span>
+          <span class="nav-link__label">Projects</span>
+        </a>
+        <a href="#stack"    class="nav-link" data-section="stack">
+          <span class="nav-link__indicator"></span>
+          <span class="nav-link__label">Stack</span>
+        </a>
+      </nav>
+
+      <footer class="sidebar__footer">
+        <a href="{{ .Site.Params.githubCollections }}" target="_blank" rel="noopener" class="social-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          FutureGadgetCollections
+        </a>
+        <a href="{{ .Site.Params.githubPolyLabs }}" target="_blank" rel="noopener" class="social-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          FG-PolyLabs
+        </a>
+        <p class="sidebar__tagline">{{ .Site.Params.tagline }}</p>
+      </footer>
+
+    </div>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <main class="main">
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <h2 class="section-heading">
+        <span class="section-heading__num">01.</span>
+        About
+        <span class="section-heading__line" aria-hidden="true"></span>
+      </h2>
+      <div class="about">
+        <p>
+          Future Gadget Labs is a personal engineering lab focused on building
+          <strong>data pipelines</strong>, <strong>admin tooling</strong>, and
+          <strong>analytics platforms</strong> for niche domains that deserve
+          better software. Every project starts with a real data problem and
+          ends with a system that makes it invisible.
+        </p>
+        <p>
+          All projects share a common backbone — static frontends served from
+          <strong>GitHub Pages</strong>, writes handled by authenticated
+          <strong>Cloud Run</strong> APIs, and everything persisted in
+          <strong>BigQuery</strong>. The pattern is boring on purpose:
+          consistent infrastructure means the interesting work stays in
+          the domain.
+        </p>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <h2 class="section-heading">
+        <span class="section-heading__num">02.</span>
+        Projects
+        <span class="section-heading__line" aria-hidden="true"></span>
+      </h2>
+
+      <div class="bento">
         {{ range $i, $p := .Site.Data.projects }}
-        <article class="card card--{{ $p.color }} reveal" data-index="{{ $i }}">
-          <div class="card__header">
-            <div class="card__org">{{ $p.org }}</div>
-            <div class="card__number">{{ $p.number }}</div>
+        <article class="card" style="--span: {{ $p.span }};" data-index="{{ $i }}">
+          <div class="card__top">
+            <div class="card__meta">
+              <span class="card__org">{{ $p.org }}</span>
+              <span class="card__number">{{ $p.number }}</span>
+            </div>
+            <a href="{{ $p.frontend_url }}" target="_blank" rel="noopener" class="card__ext-link" aria-label="View {{ $p.name }} on GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
           </div>
-          <div class="card__icon-wrap">
-            <div class="card__icon">{{ $p.icon }}</div>
-          </div>
-          <h3 class="card__title">{{ $p.name }}</h3>
+          <h3 class="card__name">{{ $p.name }}</h3>
           <p class="card__desc">{{ $p.description }}</p>
           <ul class="card__features">
-            {{ range $p.features }}
-            <li>{{ . }}</li>
-            {{ end }}
+            {{ range $p.features }}<li>{{ . }}</li>{{ end }}
           </ul>
           <div class="card__tags">
-            {{ range $p.tags }}
-            <span class="tag">{{ . }}</span>
-            {{ end }}
-          </div>
-          <div class="card__footer">
-            <a href="{{ $p.frontend_url }}" target="_blank" rel="noopener" class="card__link">
-              Frontend ↗
-            </a>
+            {{ range $p.tags }}<span class="tag">{{ . }}</span>{{ end }}
           </div>
         </article>
         {{ end }}
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ARCHITECTURE -->
-  <section class="arch" id="stack">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">// 02</span>
-        <h2 class="section-title">Shared Architecture</h2>
-        <p class="section-desc">Every project is built on the same battle-tested cloud pattern.</p>
-      </div>
+    <!-- STACK -->
+    <section id="stack" class="section">
+      <h2 class="section-heading">
+        <span class="section-heading__num">03.</span>
+        Stack
+        <span class="section-heading__line" aria-hidden="true"></span>
+      </h2>
 
-      <div class="arch__diagram reveal">
+      <div class="stack-grid">
         {{ $layers := slice
-          (dict "label" "Frontend"         "nodes" (slice "Hugo Static Site" "Bootstrap 5 UI" "GitHub Pages") "accent" "")
-          (dict "label" "Auth & Data Read"  "nodes" (slice "Firebase Auth" "GitHub Raw JSON" "GCS Fallback") "accent" "Firebase Auth")
-          (dict "label" "Backend API"       "nodes" (slice "Cloud Run" "Bearer Token Validation" "Cloud Scheduler") "accent" "Cloud Run")
-          (dict "label" "Persistence"       "nodes" (slice "BigQuery" "Google Cloud Storage") "accent" "BigQuery")
+          (dict "label" "Frontend"    "items" (slice "Hugo" "Bootstrap 5" "GitHub Pages" "GitHub Actions"))
+          (dict "label" "Auth"        "items" (slice "Firebase Auth" "Google Sign-In" "Email Allowlist" "ID Token Validation"))
+          (dict "label" "API"         "items" (slice "Cloud Run" "REST" "Bearer Auth" "Cloud Scheduler"))
+          (dict "label" "Data"        "items" (slice "Google BigQuery" "Cloud Storage" "GitHub Raw JSON" "GCS Fallback"))
         }}
-        {{ range $li, $layer := $layers }}
-          {{ if gt $li 0 }}<div class="arch__arrow">↓</div>{{ end }}
-          <div class="arch__layer">
-            <div class="arch__layer-label">{{ $layer.label }}</div>
-            <div class="arch__layer-content">
-              {{ range $layer.nodes }}
-              <div class="arch__node {{ if eq . $layer.accent }}arch__node--accent{{ end }}">{{ . }}</div>
-              {{ end }}
-            </div>
-          </div>
+        {{ range $layers }}
+        <div class="stack-group">
+          <p class="stack-group__label">{{ .label }}</p>
+          <ul class="stack-group__items">
+            {{ range .items }}<li>{{ . }}</li>{{ end }}
+          </ul>
+        </div>
         {{ end }}
       </div>
 
-      <div class="arch__detail reveal">
-        <div class="arch__detail-item">
-          <div class="arch__detail-icon">⚡</div>
-          <div>
-            <strong>Read/Write Separation</strong>
-            <p>Reads are served from pre-built static JSON (GitHub Raw or GCS), keeping the UI fast and API load minimal. Writes go through authenticated Cloud Run endpoints.</p>
-          </div>
-        </div>
-        <div class="arch__detail-item">
-          <div class="arch__detail-icon">🔒</div>
-          <div>
-            <strong>Defense in Depth Auth</strong>
-            <p>Firebase Auth with a server-side email allowlist enforced at both the frontend and the Cloud Run API layer using ID token validation.</p>
-          </div>
-        </div>
-        <div class="arch__detail-item">
-          <div class="arch__detail-icon">⚙</div>
-          <div>
-            <strong>Zero-Config CI/CD</strong>
-            <p>GitHub Actions handles build and deploy to GitHub Pages on every push. Secrets and config live as <code>HUGO_PARAMS_*</code> environment variables in the Actions workflow.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+      <p class="stack-note">
+        Every project uses the same pattern: reads from static JSON (GitHub Raw, GCS fallback),
+        writes via authenticated Cloud Run endpoints, everything stored in BigQuery.
+        The frontend deploys to GitHub Pages on every push via GitHub Actions.
+      </p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p>Built with <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a> · © {{ now.Year }} Future Gadget Labs</p>
+    </footer>
+
+  </main>
+</div>
 
 {{ end }}

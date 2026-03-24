@@ -3,7 +3,8 @@ languageCode  = "en-us"
 title         = "Future Gadget Labs"
 
 [params]
-  description      = "Full-stack applications spanning TCG collection management, market intelligence, and predictive analytics — all backed by a unified cloud-native architecture."
+  role             = "Full-Stack Engineer"
+  bio              = "I build data-driven applications at the intersection of collectibles, markets, and predictive analytics — all on a shared cloud-native foundation of Firebase, Cloud Run, and BigQuery."
+  tagline          = "El Psy Kongroo."
   githubCollections = "https://github.com/FutureGadgetCollections"
   githubPolyLabs    = "https://github.com/FG-PolyLabs"
-  tagline           = "El Psy Kongroo."

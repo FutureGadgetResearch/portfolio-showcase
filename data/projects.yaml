@@ -1,12 +1,11 @@
 - number: "01"
   name: "TCG Collection Showcase"
   org: "FutureGadgetCollections"
-  icon: "⬡"
-  color: "cyan"
+  span: 3
   description: >
     Admin dashboard for managing a trading card game collection database.
     Authenticated staff perform full CRUD operations on inventory, backed by
-    BigQuery with static JSON reads from GitHub/GCS for performance.
+    BigQuery with static JSON reads from GitHub/GCS for speed.
   features:
     - "Firebase Auth with email allowlist"
     - "BigQuery inventory persistence"
@@ -22,19 +21,16 @@
 - number: "02"
   name: "TCG Market Tracker"
   org: "FutureGadgetCollections"
-  icon: "◬"
-  color: "amber"
+  span: 1
   description: >
-    Market intelligence platform for tracking TCG product pricing.
-    Monitors sealed products, single cards, and set pull rates with
-    both historical trends and real-time market data.
+    Market intelligence for tracking TCG product pricing across sealed
+    products, singles, and pull rates with historic trend data.
   features:
     - "Sealed products, singles & pull rates"
-    - "Historic pricing data via BigQuery"
-    - "Automated market data ingestion"
+    - "Historic pricing via BigQuery"
+    - "Automated data ingestion"
   tags:
     - "Hugo"
-    - "Bootstrap 5"
     - "Firebase"
     - "BigQuery"
     - "Cloud Run"
@@ -43,19 +39,16 @@
 - number: "03"
   name: "Cloud Predict Analytics"
   org: "FG-PolyLabs"
-  icon: "⬟"
-  color: "purple"
+  span: 1
   description: >
-    Weather and cloud prediction analytics platform with admin tooling
-    for managing forecast data. A scheduled Cloud Run job refreshes
-    prediction records daily, all stored in BigQuery.
+    Weather and cloud prediction analytics with daily automated data
+    refresh via Cloud Scheduler, managed through a clean admin UI.
   features:
-    - "Daily automated data refresh via Cloud Scheduler"
+    - "Daily automated refresh via Cloud Scheduler"
     - "Dual read failover: GitHub Raw → GCS"
-    - "Weather prediction CRUD management"
+    - "Prediction CRUD management"
   tags:
     - "Hugo"
-    - "Bootstrap 5"
     - "Firebase"
     - "BigQuery"
     - "Cloud Scheduler"
@@ -64,16 +57,15 @@
 - number: "04"
   name: "Doomsday Predictor"
   org: "FG-PolyLabs"
-  icon: "⬢"
-  color: "red"
+  span: 3
   description: >
-    Prediction market data gathering and management system for tracking
-    and analyzing doomsday scenario probabilities. Admin UI for curating
-    prediction records with full audit history.
+    Prediction market data gathering system for tracking and analyzing
+    doomsday scenario probabilities. Full CRUD admin UI with audit history,
+    backed by BigQuery and distributed via GitHub Raw and GCS.
   features:
-    - "Prediction record CRUD with history"
+    - "Prediction record CRUD with full history"
     - "Shared Firebase auth project across orgs"
-    - "Static JSON published to GitHub + GCS"
+    - "Static JSON distributed to GitHub + GCS"
   tags:
     - "Hugo"
     - "Bootstrap 5"
