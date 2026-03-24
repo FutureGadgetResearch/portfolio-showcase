@@ -1,0 +1,141 @@
+{{ define "main" }}
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <canvas id="gridCanvas"></canvas>
+    </div>
+    <div class="hero__content">
+      <div class="hero__eyebrow reveal">
+        <span class="dot"></span> {{ upper .Site.Title }}
+      </div>
+      <h1 class="hero__title reveal">
+        <span class="hero__title-line">Building systems</span>
+        <span class="hero__title-line gradient-text">at the edge of data.</span>
+      </h1>
+      <p class="hero__subtitle reveal">
+        {{ .Site.Params.description }}
+      </p>
+      <div class="hero__cta reveal">
+        <a href="#projects" class="btn btn--primary">View Projects</a>
+        <a href="{{ .Site.Params.githubCollections }}" target="_blank" rel="noopener" class="btn btn--ghost">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="hero__scroll-hint">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ARCH STRIP -->
+  <section class="arch-strip">
+    <div class="arch-strip__inner">
+      {{ $items := slice "Hugo · Static Sites" "Firebase Auth" "Cloud Run APIs" "BigQuery Storage" "GitHub Pages CI/CD" }}
+      {{ range $i, $item := $items }}
+        {{ if gt $i 0 }}<div class="arch-strip__divider"></div>{{ end }}
+        <div class="arch-strip__item reveal">
+          <span class="arch-strip__icon">◈</span>
+          <span>{{ $item }}</span>
+        </div>
+      {{ end }}
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">// 01</span>
+        <h2 class="section-title">Projects</h2>
+        <p class="section-desc">A suite of data-driven applications built on a shared cloud-native foundation.</p>
+      </div>
+
+      <div class="projects__grid">
+        {{ range $i, $p := .Site.Data.projects }}
+        <article class="card card--{{ $p.color }} reveal" data-index="{{ $i }}">
+          <div class="card__header">
+            <div class="card__org">{{ $p.org }}</div>
+            <div class="card__number">{{ $p.number }}</div>
+          </div>
+          <div class="card__icon-wrap">
+            <div class="card__icon">{{ $p.icon }}</div>
+          </div>
+          <h3 class="card__title">{{ $p.name }}</h3>
+          <p class="card__desc">{{ $p.description }}</p>
+          <ul class="card__features">
+            {{ range $p.features }}
+            <li>{{ . }}</li>
+            {{ end }}
+          </ul>
+          <div class="card__tags">
+            {{ range $p.tags }}
+            <span class="tag">{{ . }}</span>
+            {{ end }}
+          </div>
+          <div class="card__footer">
+            <a href="{{ $p.frontend_url }}" target="_blank" rel="noopener" class="card__link">
+              Frontend ↗
+            </a>
+          </div>
+        </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section class="arch" id="stack">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">// 02</span>
+        <h2 class="section-title">Shared Architecture</h2>
+        <p class="section-desc">Every project is built on the same battle-tested cloud pattern.</p>
+      </div>
+
+      <div class="arch__diagram reveal">
+        {{ $layers := slice
+          (dict "label" "Frontend"         "nodes" (slice "Hugo Static Site" "Bootstrap 5 UI" "GitHub Pages") "accent" "")
+          (dict "label" "Auth & Data Read"  "nodes" (slice "Firebase Auth" "GitHub Raw JSON" "GCS Fallback") "accent" "Firebase Auth")
+          (dict "label" "Backend API"       "nodes" (slice "Cloud Run" "Bearer Token Validation" "Cloud Scheduler") "accent" "Cloud Run")
+          (dict "label" "Persistence"       "nodes" (slice "BigQuery" "Google Cloud Storage") "accent" "BigQuery")
+        }}
+        {{ range $li, $layer := $layers }}
+          {{ if gt $li 0 }}<div class="arch__arrow">↓</div>{{ end }}
+          <div class="arch__layer">
+            <div class="arch__layer-label">{{ $layer.label }}</div>
+            <div class="arch__layer-content">
+              {{ range $layer.nodes }}
+              <div class="arch__node {{ if eq . $layer.accent }}arch__node--accent{{ end }}">{{ . }}</div>
+              {{ end }}
+            </div>
+          </div>
+        {{ end }}
+      </div>
+
+      <div class="arch__detail reveal">
+        <div class="arch__detail-item">
+          <div class="arch__detail-icon">⚡</div>
+          <div>
+            <strong>Read/Write Separation</strong>
+            <p>Reads are served from pre-built static JSON (GitHub Raw or GCS), keeping the UI fast and API load minimal. Writes go through authenticated Cloud Run endpoints.</p>
+          </div>
+        </div>
+        <div class="arch__detail-item">
+          <div class="arch__detail-icon">🔒</div>
+          <div>
+            <strong>Defense in Depth Auth</strong>
+            <p>Firebase Auth with a server-side email allowlist enforced at both the frontend and the Cloud Run API layer using ID token validation.</p>
+          </div>
+        </div>
+        <div class="arch__detail-item">
+          <div class="arch__detail-icon">⚙</div>
+          <div>
+            <strong>Zero-Config CI/CD</strong>
+            <p>GitHub Actions handles build and deploy to GitHub Pages on every push. Secrets and config live as <code>HUGO_PARAMS_*</code> environment variables in the Actions workflow.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{{ end }}

@@ -1,0 +1,83 @@
+- number: "01"
+  name: "TCG Collection Showcase"
+  org: "FutureGadgetCollections"
+  icon: "⬡"
+  color: "cyan"
+  description: >
+    Admin dashboard for managing a trading card game collection database.
+    Authenticated staff perform full CRUD operations on inventory, backed by
+    BigQuery with static JSON reads from GitHub/GCS for performance.
+  features:
+    - "Firebase Auth with email allowlist"
+    - "BigQuery inventory persistence"
+    - "Static JSON read / Cloud Run write separation"
+  tags:
+    - "Hugo"
+    - "Bootstrap 5"
+    - "Firebase"
+    - "BigQuery"
+    - "Cloud Run"
+  frontend_url: "https://github.com/FutureGadgetCollections/collection-showcase-frontend"
+
+- number: "02"
+  name: "TCG Market Tracker"
+  org: "FutureGadgetCollections"
+  icon: "◬"
+  color: "amber"
+  description: >
+    Market intelligence platform for tracking TCG product pricing.
+    Monitors sealed products, single cards, and set pull rates with
+    both historical trends and real-time market data.
+  features:
+    - "Sealed products, singles & pull rates"
+    - "Historic pricing data via BigQuery"
+    - "Automated market data ingestion"
+  tags:
+    - "Hugo"
+    - "Bootstrap 5"
+    - "Firebase"
+    - "BigQuery"
+    - "Cloud Run"
+  frontend_url: "https://github.com/FutureGadgetCollections/collection-market-tracker-frontend-admin"
+
+- number: "03"
+  name: "Cloud Predict Analytics"
+  org: "FG-PolyLabs"
+  icon: "⬟"
+  color: "purple"
+  description: >
+    Weather and cloud prediction analytics platform with admin tooling
+    for managing forecast data. A scheduled Cloud Run job refreshes
+    prediction records daily, all stored in BigQuery.
+  features:
+    - "Daily automated data refresh via Cloud Scheduler"
+    - "Dual read failover: GitHub Raw → GCS"
+    - "Weather prediction CRUD management"
+  tags:
+    - "Hugo"
+    - "Bootstrap 5"
+    - "Firebase"
+    - "BigQuery"
+    - "Cloud Scheduler"
+  frontend_url: "https://github.com/FG-PolyLabs/cloud-predict-analytics-frontend-admin"
+
+- number: "04"
+  name: "Doomsday Predictor"
+  org: "FG-PolyLabs"
+  icon: "⬢"
+  color: "red"
+  description: >
+    Prediction market data gathering and management system for tracking
+    and analyzing doomsday scenario probabilities. Admin UI for curating
+    prediction records with full audit history.
+  features:
+    - "Prediction record CRUD with history"
+    - "Shared Firebase auth project across orgs"
+    - "Static JSON published to GitHub + GCS"
+  tags:
+    - "Hugo"
+    - "Bootstrap 5"
+    - "Firebase"
+    - "BigQuery"
+    - "Cloud Run"
+  frontend_url: "https://github.com/FG-PolyLabs/doomsday-predict-frontend-admin"
