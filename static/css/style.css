@@ -302,8 +302,12 @@ body::after {
   overflow: hidden;
 }
 
+.card--span-1 { grid-column: span 1; }
+.card--span-2 { grid-column: span 2; }
+.card--span-3 { grid-column: span 3; }
+.card--span-4 { grid-column: span 4; }
+
 .card {
-  grid-column: span var(--span, 2);
   background: var(--navy-900);
   padding: 1.75rem;
   display: flex;
@@ -435,8 +439,8 @@ body::after {
 .card:hover .tag { background: rgba(167, 139, 250, 0.18); }
 
 /* Compact cards (span 1): hide features to save space */
-.card[style*="--span: 1"] .card__features { display: none; }
-.card[style*="--span: 1"] .card__desc {
+.card--span-1 .card__features { display: none; }
+.card--span-1 .card__desc {
   -webkit-line-clamp: 4;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -568,8 +572,8 @@ body::after {
     grid-template-columns: 1fr;
   }
   .card { grid-column: span 1 !important; }
-  .card[style*="--span: 1"] .card__features { display: flex; }
-  .card[style*="--span: 1"] .card__desc { display: block; overflow: visible; }
+  .card--span-1 .card__features { display: flex; }
+  .card--span-1 .card__desc { display: block; overflow: visible; }
 
   .stack-grid { grid-template-columns: 1fr; }
 }

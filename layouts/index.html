@@ -84,7 +84,7 @@
 
       <div class="bento">
         {{ range $i, $p := .Site.Data.projects }}
-        <article class="card" style="--span: {{ $p.span }};" data-index="{{ $i }}">
+        <article class="card card--span-{{ $p.span }}" data-index="{{ $i }}">
           <div class="card__top">
             <div class="card__meta">
               <span class="card__org">{{ $p.org }}</span>
