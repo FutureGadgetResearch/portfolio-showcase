@@ -73,3 +73,62 @@
     - "BigQuery"
     - "Cloud Run"
   frontend_url: "https://github.com/FG-PolyLabs/doomsday-predict-frontend-admin"
+
+- number: "05"
+  name: "Card Identifier"
+  org: "FutureGadgetResearch"
+  span: 2
+  wip: true
+  description: >
+    Admin console for a card identification backend. Operators manage card
+    records and items, with perceptual hash syncing for image deduplication.
+    Reads static JSON from GitHub/GCS; writes route to a Cloud Run API.
+  features:
+    - "Perceptual hash sync job for card image matching"
+    - "External card catalog source via params.catalog"
+    - "BigQuery schema management in-repo"
+  tags:
+    - "Hugo"
+    - "Bootstrap 5"
+    - "Firebase"
+    - "BigQuery"
+    - "Cloud Run"
+  frontend_url: "https://github.com/FutureGadgetResearch/card-identifier-admin-frontend"
+
+- number: "06"
+  name: "Crypto Portfolio"
+  org: "FutureGadgetInvestments"
+  span: 1
+  wip: true
+  description: >
+    Admin UI for tracking a cryptocurrency portfolio. Early-stage scaffold
+    on the shared Hugo + BigQuery + Cloud Run architecture.
+  features:
+    - "Firebase Auth with email allowlist"
+    - "BigQuery portfolio persistence"
+    - "Static JSON read / Cloud Run write separation"
+  tags:
+    - "Hugo"
+    - "Firebase"
+    - "BigQuery"
+    - "Cloud Run"
+  frontend_url: "https://github.com/FutureGadgetInvestments/crypto-portfolio-frontend-admin"
+
+- number: "07"
+  name: "Stock Portfolio"
+  org: "FutureGadgetInvestments"
+  span: 1
+  wip: true
+  description: >
+    Admin UI for tracking a stock portfolio. Early-stage scaffold on the
+    shared Hugo + BigQuery + Cloud Run architecture.
+  features:
+    - "Firebase Auth with email allowlist"
+    - "BigQuery portfolio persistence"
+    - "Static JSON read / Cloud Run write separation"
+  tags:
+    - "Hugo"
+    - "Firebase"
+    - "BigQuery"
+    - "Cloud Run"
+  frontend_url: "https://github.com/FutureGadgetInvestments/stock-portfolio-frontend-admin"

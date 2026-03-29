@@ -364,6 +364,25 @@ body::after {
   padding-left: 0.6rem;
 }
 
+.card__top-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.card__wip-badge {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 3px;
+  padding: 0.15em 0.45em;
+}
+
 .card__ext-link {
   color: var(--slate-lo);
   transition: color 0.2s var(--ease-out), transform 0.2s var(--ease-out);
